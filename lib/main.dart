@@ -46,21 +46,43 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  TextEditingController _textFieldController = TextEditingController();
+  String editTextValue = "";
+
   void _showAlarmPopup(BuildContext context) {
+    //Create confirm button
     Widget setButton = FlatButton(
-        child: Text("Set alarm!"),
+        child: Text("SET ALARM"),
         onPressed: () {
-          Navigator.of(context).pop();
-        });
+          Navigator.pop(context);
+          setState(() {
+            editTextValue = _textFieldController.text;
+          });
+          _textFieldController.text = "";
+        },
+        color: Colors.green,
+        textColor: Colors.white);
+
+    //Create cancel button
+    Widget cancelButton = FlatButton(
+        child: Text("CANCEL"),
+        onPressed: () {
+          Navigator.pop(context);
+          _textFieldController.text = "";
+        },
+        color: Colors.red,
+        textColor: Colors.white);
+
     showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text("Set the alarm!"),
-            content: Text("We should be able to set the alarm and the coin price here! :)"),
-            actions: [
-              setButton,
-            ],
+            content: TextField(
+              controller: _textFieldController,
+              decoration: InputDecoration(hintText: "Enter coin price here!"),
+            ),
+            actions: [cancelButton, setButton],
             elevation: 5,
           );
         });
@@ -110,9 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'No alarms set yet!',
-            ),
+            (editTextValue != "") ? Text("Alarm set! Alarm will go off when price is: $editTextValue") : Text("No alarms set yet!")
           ],
         ),
       ),
