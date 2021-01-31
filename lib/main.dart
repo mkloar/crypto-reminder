@@ -46,7 +46,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  void _showAlarmPopup(BuildContext context) {
+    Widget setButton = FlatButton(
+        child: Text("Set alarm!"),
+        onPressed: () {
+          Navigator.of(context).pop();
+        });
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Set the alarm!"),
+            content: Text("We should be able to set the alarm and the coin price here! :)"),
+            actions: [
+              setButton,
+            ],
+            elevation: 5,
+          );
+        });
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -55,7 +73,6 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
     });
   }
 
@@ -94,17 +111,15 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              'No alarms set yet!',
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          _showAlarmPopup(context);
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
