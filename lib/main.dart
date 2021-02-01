@@ -80,6 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
             title: Text("Set the alarm!"),
             content: TextField(
               controller: _textFieldController,
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(hintText: "Enter coin price here!"),
             ),
             actions: [cancelButton, setButton],
