@@ -122,9 +122,6 @@ class Error extends StatelessWidget {
             color: Colors.redAccent,
             child: Text(
               'Retry',
-              style: TextStyle(
-//                color: Colors.white,
-              ),
             ),
             onPressed: onRetryPressed,
           )
@@ -149,7 +146,6 @@ class Loading extends StatelessWidget {
             loadingMessage,
             textAlign: TextAlign.center,
             style: TextStyle(
-//              color: Colors.lightGreen,
               fontSize: 24,
             ),
           ),
