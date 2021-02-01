@@ -1,3 +1,5 @@
+![Flutter CI](https://github.com/mkloar/crypto-reminder/workflows/Flutter%20CI/badge.svg)
+
 # crypto_reminder
 
 App that wakes you up when btc dips
