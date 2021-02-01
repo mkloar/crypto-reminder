@@ -133,7 +133,10 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            (editTextValue != "") ? Text("Alarm set! Alarm will go off when price is: $editTextValue") : Text("No alarms set yet!")
+            (editTextValue != "")
+                ? Text(
+                    "Alarm set! Alarm will go off when price is: $editTextValue")
+                : Text("No alarms set yet!")
           ],
         ),
       ),
