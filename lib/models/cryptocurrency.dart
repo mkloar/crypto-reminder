@@ -4,7 +4,8 @@ class CryptoCurrencyResponse {
   CryptoCurrencyResponse({this.totalResults, this.results});
   CryptoCurrencyResponse.fromJsonList(List cryptoList) {
     if (cryptoList != null) {
-      results = cryptoList.map((crypto) => CryptoCurrency.fromJson(crypto)).toList();
+      results =
+          cryptoList.map((crypto) => CryptoCurrency.fromJson(crypto)).toList();
     }
   }
 }
@@ -23,7 +24,6 @@ class CryptoCurrency {
         symbol: json['symbol'],
         price24h: json['price_24h'],
         volume24h: json['volume_24h'],
-        lastPrice: json['last_trade_price']
-    );
+        lastPrice: json['last_trade_price']);
   }
 }

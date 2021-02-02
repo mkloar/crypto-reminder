@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:crypto_reminder/view/crypto_list.dart';
+import 'package:crypto_reminder/view/crypto/crypto_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -91,7 +91,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _navigateToCryptoScreen(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => CryptoScreen()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => CryptoScreen()));
   }
 
   @override

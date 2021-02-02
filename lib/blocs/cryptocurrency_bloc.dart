@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:crypto_reminder/networking/api_response.dart';
@@ -17,7 +16,8 @@ class CryptoBloc {
       _cryptoListController.stream;
 
   CryptoBloc() {
-    _cryptoListController = StreamController<ApiResponse<List<CryptoCurrency>>>();
+    _cryptoListController =
+        StreamController<ApiResponse<List<CryptoCurrency>>>();
     _cryptoRepository = CryptoRepository();
     fetchCryptoList();
   }
@@ -25,7 +25,8 @@ class CryptoBloc {
   fetchCryptoList() async {
     cryptoCurrencyListSink.add(ApiResponse.loading('Fetching Crypto Data'));
     try {
-      List<CryptoCurrency> cryptoCurrencies = await _cryptoRepository.fetchCryptoList();
+      List<CryptoCurrency> cryptoCurrencies =
+          await _cryptoRepository.fetchCryptoList();
       cryptoCurrencyListSink.add(ApiResponse.completed(cryptoCurrencies));
     } catch (e) {
       cryptoCurrencyListSink.add(ApiResponse.error(e.toString()));
