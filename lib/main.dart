@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:crypto_reminder/view/crypto/crypto_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -89,14 +90,9 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-    });
+  void _navigateToCryptoScreen(BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => CryptoScreen()));
   }
 
   @override
@@ -133,7 +129,21 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            (editTextValue != "") ? Text("Alarm set! Alarm will go off when price is: $editTextValue") : Text("No alarms set yet!")
+            (editTextValue != "")
+                ? Text(
+                    "Alarm set! Alarm will go off when price is: $editTextValue")
+                : Text("No alarms set yet!"),
+            Center(
+              child: RaisedButton(
+                child: Text(
+                  'Navigate to a Crypto Screen',
+                  style: TextStyle(fontSize: 12.0),
+                ),
+                onPressed: () {
+                  _navigateToCryptoScreen(context);
+                },
+              ),
+            )
           ],
         ),
       ),
